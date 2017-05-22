@@ -2,7 +2,9 @@
 
 $ npm install express
 
-$ node index.js
+// $ node index.js // not required
+
+$ DEBUG=oc-acquia-proxy:* npm start
 
 Hit http://localhost:3000/
 
