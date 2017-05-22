@@ -1,12 +1,22 @@
 {
-  "name": "oc-acquia-proxy",
+  "name": "nodejs-poc",
   "version": "1.0.0",
-  "description": "Oncorps Acquia proxy",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./bin/www"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heykarthikwithu/nodejs-poc.git"
+  },
+  "author": "heykarthikwithu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heykarthikwithu/nodejs-poc/issues"
+  },
+  "homepage": "https://github.com/heykarthikwithu/nodejs-poc#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.17.1",
@@ -26,15 +36,5 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "serve-favicon": "~2.4.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/srijanaravali/oc-acquia-proxy.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/srijanaravali/oc-acquia-proxy/issues"
-  },
-  "homepage": "https://github.com/srijanaravali/oc-acquia-proxy#readme"
+  }
 }
