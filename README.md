@@ -1,6 +1,6 @@
 # oc-acquia-proxy
 
-$ npm install express
+$ npm install --save
 
 // $ node index.js // not required
 
