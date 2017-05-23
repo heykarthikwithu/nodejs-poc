@@ -2,10 +2,11 @@
 <body>
 <div class="col-sm-8 col-sm-offset-2">
   <div class="jumbotron text-center">
-    <h1> Authentication</h1>
+    <h1>OC Acquia Proxy</h1>
     <% if (!user) { %>
       <h2>Welcome! Please log in.</h2>
-      <a href="/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>
+      <!--<a href="/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>-->
+      <a href="/auth/github" class="btn btn-default"><span class="fa fa-sign-in"></span> Login with GitHub</a>
     <% } else { %>
       <p>
         <a href="/profile">Account</a> |

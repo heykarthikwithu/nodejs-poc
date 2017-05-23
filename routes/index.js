@@ -7,10 +7,6 @@ router.get('/', function(req, res, next) {
     res.render('index', { user: req.user });
 });
 
-router.get('/login', function(req, res, next) {
-    res.render('login', { user: req.user });
-});
-
 router.get('/profile', ensureAuthenticated, function(req, res){
     res.render('profile.ejs', { user: req.user });
 });
@@ -39,5 +35,5 @@ module.exports = router;
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
-    res.redirect('/login')
+    res.redirect('/')
 }
