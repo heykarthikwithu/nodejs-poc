@@ -2,8 +2,6 @@
 
 $ npm install --save
 
-// $ node index.js // not required
-
 $ DEBUG=oc-acquia-proxy:* npm start
 
 Hit http://localhost:3000/
