@@ -1,30 +1,24 @@
-var JsonStrategy = require('passport-json').Strategy;
-// var Users = {
-//     "email": "admin",
-//     "password": "admin"
-// };
+var GitHubStrategy = require('passport-github2').Strategy;
+var GITHUB_CLIENT_ID = "8c72efc160e0d1771104";
+var GITHUB_CLIENT_SECRET = "b2341d1231a1f33f2d1346c400a27c8ad97d8d12";
 
 module.exports = function(passport) {
-    passport.use(new JsonStrategy(
-        {
-            usernameProp: 'email',
-            passwordProp: 'passwd',
-            passReqToCallback: true
+    passport.serializeUser(function(user, done) {
+        done(null, user);
+    });
+    passport.deserializeUser(function(obj, done) {
+        done(null, obj);
+    });
+    passport.use(new GitHubStrategy({
+            clientID: GITHUB_CLIENT_ID,
+            clientSecret: GITHUB_CLIENT_SECRET,
+            callbackURL: "http://127.0.0.1:3000/auth/github/callback"
         },
-        ocAuthenticate
+        function(accessToken, refreshToken, profile, done) {
+            process.nextTick(function () {
+                console.log(profile);
+                return done(null, profile);
+            });
+        }
     ));
 };
-
-function ocAuthenticate(req, email, password, done) {
-    console.log(email);
-    console.log(password);
-    // User.findOne({ 'local.email':  email }, function(err, user) {
-    //     if (err)
-    //         return done(err);
-    //     if (!user)
-    //         return done(null, false, req.flash('loginMessage', 'No user found.'));
-    //     if (!user.validPassword(password))
-    //         return done(null, false, req.flash('loginMessage', 'Wrong password.'));
-    //     return done(null, user);
-    // });
-}

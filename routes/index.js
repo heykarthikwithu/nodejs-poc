@@ -4,14 +4,14 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    res.render('index', { user: req.user });
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('login.ejs', { message: req.flash('loginMessage') });
+    res.render('login', { user: req.user });
 });
 
-router.get('/profile', isLoggedIn, function(req, res) {
+router.get('/profile', ensureAuthenticated, function(req, res){
     res.render('profile.ejs', { user: req.user });
 });
 
@@ -20,18 +20,24 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-router.post(
-    '/login',
-    passport.authenticate('json', { failureRedirect: '/wronghere' }),
+router.get('/auth/github',
+    passport.authenticate('github', { scope: [ 'user:email' ] }),
+    function(req, res){
+        // The request will be redirected to GitHub for authentication, so this
+        // function will not be called.
+    }
+);
+
+router.get('/auth/github/callback',
+    passport.authenticate('github', { failureRedirect: '/login' }),
     function(req, res) {
-        res.redirect('/');
+        res.redirect('/profile');
     }
 );
 
 module.exports = router;
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-    res.redirect('/');
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) { return next(); }
+    res.redirect('/login')
 }
