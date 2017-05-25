@@ -1,8 +1,8 @@
-# oc-acquia-proxy
+# nodejs poc
 
 $ npm install --save
 
-$ DEBUG=oc-acquia-proxy:* npm start
+$ DEBUG=nodejs-poc:* npm start
 
 Hit http://localhost:3000/
 
